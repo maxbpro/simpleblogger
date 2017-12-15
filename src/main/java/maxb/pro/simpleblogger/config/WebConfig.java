@@ -2,15 +2,18 @@ package maxb.pro.simpleblogger.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configurable
+@Configuration
+@EnableWebMvcSecurity
 @EnableWebSecurity
 public class WebConfig extends WebSecurityConfigurerAdapter {
 
@@ -44,7 +47,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 //                // authenticate all remaining URLS
 //                .anyRequest().fullyAuthenticated().and()
 //                // adding JWT filter
-//                //.addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
 //                // enabling the basic authentication
 //                .httpBasic().and()
 //                // configuring the session as state less. Which means there is
@@ -52,6 +55,15 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 //                // disabling the CSRF - Cross Site Request Forgery
 //                .csrf().disable();
+
+//        http
+//                .authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .and()
+//                .httpBasic().disable();
+
     }
 
 

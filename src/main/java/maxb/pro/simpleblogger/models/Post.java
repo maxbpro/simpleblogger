@@ -1,29 +1,24 @@
 package maxb.pro.simpleblogger.models;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data
 @Document(collection = "post")
 public class Post {
 
     @Id
-    private long id;
-
+    private String id;
     private String title;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    private String permalink;
+    private String content;
+    private String tags;
+    private String keywords;
+    private String author;
+    private LocalDateTime datePublished;
+    private List<Comment> comments;
 }
