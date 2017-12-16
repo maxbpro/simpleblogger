@@ -1,5 +1,6 @@
 package maxb.pro.simpleblogger.config;
 
+import maxb.pro.simpleblogger.services.MongoUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Configuration;
@@ -13,21 +14,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebMvcSecurity
 @EnableWebSecurity
 public class WebConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private MongoUserDetailsService userDetailsService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                // using in memory authentication
-                .inMemoryAuthentication()
-                // adding Administrator user
-                .withUser("admin").password("admin").authorities("ADMIN", "USER")
-                // using add() method for adding new user
-                .and()
-                // adding a user without Administrator authority
-                .withUser("user").password("user").authorities("USER");
+        auth.userDetailsService(userDetailsService);
     }
 
 
@@ -35,35 +30,28 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
         web.ignoring()
-                .antMatchers("/", "/vendor/**", "/css/**", "/js/**", "/img/**", "/static/**", "/index.html", "/app/**", "/register", "/authenticate", "/favicon.ico");
+                .antMatchers("/", "/vendor/**", "/css/**", "/js/**", "/img/**", "/static/**",
+                        "/index.html", "/app/**", "/register", "/authenticate", "/favicon.ico");
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                // starts authorizing configurations
-//                .authorizeRequests()
-//                // authenticate all remaining URLS
-//                .anyRequest().fullyAuthenticated().and()
-//                // adding JWT filter
-//                .addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
-//                // enabling the basic authentication
-//                .httpBasic().and()
-//                // configuring the session as state less. Which means there is
-//                // no session in the server
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-//                // disabling the CSRF - Cross Site Request Forgery
-//                .csrf().disable();
-
-//        http
-//                .authorizeRequests()
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .and()
-//                .httpBasic().disable();
-
+        http
+                .authorizeRequests()
+                .antMatchers("/static").permitAll()
+                // authenticate all remaining URLS
+                .anyRequest().fullyAuthenticated().and()
+                // adding JWT filter
+                .addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
+                // enabling the basic authentication
+                .httpBasic().and()
+                // configuring the session as state less. Which means there is
+                // no session in the server
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                // disabling the CSRF - Cross Site Request Forgery
+                .csrf().disable()
+                .logout().permitAll();
     }
 
 
