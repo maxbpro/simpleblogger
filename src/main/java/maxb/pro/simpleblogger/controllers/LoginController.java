@@ -11,13 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.*;
 
 @RestController
-@RequestMapping()
+@RequestMapping
 public class LoginController {
 
     static final String SECRET = "secretkey";
@@ -25,6 +26,18 @@ public class LoginController {
 
     @Autowired
     private UsersRepository usersRepository;
+
+//    @PostConstruct
+//    private void init(){
+//        User user = new User();
+//        user.setUsername("maxb2009");
+//        user.setPassword("1234");
+//        user.setName("Maxim");
+//        List<String> roles = new ArrayList<>();
+//        roles.add("USER");
+//        user.setRoles(roles);
+//        usersRepository.save(user);
+//    }
 
 
     /**
@@ -88,5 +101,10 @@ public class LoginController {
         }
 
 
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public void logout(){
+        
     }
 }

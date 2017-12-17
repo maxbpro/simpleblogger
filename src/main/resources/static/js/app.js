@@ -1,6 +1,8 @@
 'use strict'
 
-angular.module('spBlogger',['ngCookies','ngSanitize','ngResource','ngAnimate','ui.router','pascalprecht.translate','spBlogger.admin','spBlogger.posts','spBlogger.controllers','spBlogger.directives','spBlogger.filters','spBlogger.services']);
+angular.module('spBlogger',['ngCookies','ngSanitize','ngResource','ngAnimate','ui.router','pascalprecht.translate',
+    'spBlogger.admin','spBlogger.posts','spBlogger.controllers','spBlogger.directives','spBlogger.filters',
+    'spBlogger.services']);
 
 angular.module('spBlogger').config(['$translateProvider','$httpProvider',function($translateProvider,$httpProvider){
     $translateProvider.translations('en', {

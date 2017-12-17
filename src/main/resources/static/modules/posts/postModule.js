@@ -1,6 +1,7 @@
 'use strict'
 
-angular.module('spBlogger.posts',['spBlogger.posts.controllers','spBlogger.posts.directives','spBlogger.posts.services','spBlogger.posts.filters']);
+angular.module('spBlogger.posts',['spBlogger.posts.controllers','spBlogger.posts.directives',
+	'spBlogger.posts.services','spBlogger.posts.filters']);
 
 angular.module('spBlogger.posts').config(['$stateProvider','$locationProvider',function($stateProvider,$locationProvider){
 	$stateProvider.state('allPosts',{
@@ -9,7 +10,7 @@ angular.module('spBlogger.posts').config(['$stateProvider','$locationProvider',f
 		controller: 'PostController'
 	});
 	$stateProvider.state('singlePost',{
-		url:'/posts/:id/:permalink',
+		url:'/posts/:id',
 		templateUrl: 'modules/posts/views/singlePost.html',
 		controller: 'PostDetailsController'
 	});

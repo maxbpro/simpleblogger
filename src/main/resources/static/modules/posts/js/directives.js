@@ -13,10 +13,10 @@ angular.module('spBlogger.posts.directives',[]).directive('spbComments',['Post',
 
            scope.saveComment=function(){
 
-               var postID=scope.postInstance._id,
-                   savedPostInstance={};
+               var postID = scope.postInstance.id;
+               var savedPostInstance={};
 
-               scope.comment.datePublished=new Date();
+               scope.comment.datePublished = new Date();
 
                angular.copy(scope.postInstance,savedPostInstance);
 

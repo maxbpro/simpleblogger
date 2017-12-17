@@ -50,5 +50,6 @@ angular.module('spBlogger.admin').config(['$stateProvider',function($stateProvid
     });
 
     authService.user=$cookieStore.get('user');
+    authService.token=$cookieStore.get('token');
 
 }]);
