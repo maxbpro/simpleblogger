@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -37,21 +38,26 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+
+             http
                 .authorizeRequests()
                 .antMatchers("/static").permitAll()
                 // authenticate all remaining URLS
-                .anyRequest().fullyAuthenticated().and()
+                .anyRequest().fullyAuthenticated()
+                .and()
                 // adding JWT filter
                 .addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
                 // enabling the basic authentication
-                .httpBasic().and()
+                .httpBasic()
+                .and()
+                .logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+                .and()
                 // configuring the session as state less. Which means there is
                 // no session in the server
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 // disabling the CSRF - Cross Site Request Forgery
-                .csrf().disable()
-                .logout().permitAll();
+                .csrf().disable();
 
     }
 

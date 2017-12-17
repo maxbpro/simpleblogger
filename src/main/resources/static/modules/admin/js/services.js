@@ -14,7 +14,8 @@ angular.module('spBlogger.admin.services', [])
         return $window.confirm(message); //Ask the users if they really want to delete the post entry
     }
 
-}]).factory('authService',['AUTH_ENDPOINT','LOGOUT_ENDPOINT','$http','$cookieStore',function(AUTH_ENDPOINT,LOGOUT_ENDPOINT,$http,$cookieStore){
+}]).factory('authService',['AUTH_ENDPOINT','LOGOUT_ENDPOINT','$http','$cookieStore', '$localStorage',
+    function(AUTH_ENDPOINT,LOGOUT_ENDPOINT,$http,$cookieStore, $localStorage){
 
     var auth={};
 
@@ -28,10 +29,26 @@ angular.module('spBlogger.admin.services', [])
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
         }).then(function(response,status){
-            auth.user = response.data;
-            auth.token = response.token;
+
+            auth.user = response.data.user;
+            auth.token = response.data.token;
+
             $cookieStore.put('user',auth.user);
             $cookieStore.put('token',auth.token);
+
+            // store username and token in local storage to keep user logged in between page refreshes
+            $localStorage.currentUser = { user: auth.user, token: auth.token };
+
+            // add jwt token to auth header for all requests made by the $http service
+            $http.defaults.headers.common.Authorization = 'Bearer ' + auth.token;
+
+
+
+
+            // auth.user = response.data;
+            // auth.token = response.token;
+            // $cookieStore.put('user',auth.user);
+            // $cookieStore.put('token',auth.token);
             return auth.user;
         });
 
@@ -43,6 +60,9 @@ angular.module('spBlogger.admin.services', [])
             auth.token = undefined;
             $cookieStore.remove('user');
             $cookieStore.remove('token');
+
+            delete $localStorage.currentUser;
+            $http.defaults.headers.common.Authorization = '';
         });
     }
 

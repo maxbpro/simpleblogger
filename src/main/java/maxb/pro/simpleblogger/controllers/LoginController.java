@@ -103,8 +103,8 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public void logout(){
-        
-    }
+//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+//    public void logout(){
+//
+//    }
 }

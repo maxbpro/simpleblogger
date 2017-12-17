@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('spBlogger',['ngCookies','ngSanitize','ngResource','ngAnimate','ui.router','pascalprecht.translate',
+angular.module('spBlogger',['ngCookies', 'ngStorage', 'ngSanitize','ngResource','ngAnimate','ui.router','pascalprecht.translate',
     'spBlogger.admin','spBlogger.posts','spBlogger.controllers','spBlogger.directives','spBlogger.filters',
     'spBlogger.services']);
 
