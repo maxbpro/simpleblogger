@@ -1,0 +1,92 @@
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/post-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{singlePost.title}}</h1>
+                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                    <span class="meta">Posted by
+                <a href="#">{{singlePost.author}}</a>
+                on {{singlePost.datePublished | date:'MM-dd-yyyy'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+<!--<div class="row">-->
+  <!--<div class="col-xs-8 col-xs-offset-2 singlePost">-->
+	<!--<span class="pull-right cross-btn" ng-click="closePost()">&times;</span>  -->
+	<!--<h1>{{singlePost.title}}</h1>-->
+	<!--<h5>{{'BY' | translate}}: {{singlePost.author}} | {{singlePost.datePublished | date:'MM-dd-yyyy'}}</h5>-->
+	<!--<div class="postContent" ng-bind-html="singlePost.content"></div>-->
+    <!--<div class="comments">-->
+        <!--<spb-comments post-instance="singlePost"></spb-comments>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p>{{singlePost.content}}</p>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Comments</h3>
+                <br/>
+
+                <div class="comments-list">
+                    <div class="single-comment" ng-repeat="comment in singlePost.comments">
+                        <div class="content">{{comment.content}}</div>
+                        <div class="info">By : <span>{{comment.author}}</span> | On: <span>{{comment.datePublished | date:'MM-dd-yy'}}</span></div>
+                    </div>
+                </div>
+
+                <form ng-submit="sendComment(singlePost)" novalidate>
+
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Username</label>
+                            <textarea cols="40" rows="5" class="form-control" ng-model="comment.content" placeholder="Type your comment here"
+                                   required data-validation-required-message="Please enter your comment."></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Author</label>
+                            <input type="text" class="form-control"
+                                   placeholder="Author" ng-model="comment.author"
+                                   required data-validation-required-message="Please enter your username.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" >Send comment</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</article>
+

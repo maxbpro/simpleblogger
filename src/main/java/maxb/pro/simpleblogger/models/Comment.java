@@ -12,5 +12,5 @@ public class Comment {
     private String author;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
-    private LocalDateTime datePublished;
+    private LocalDateTime datePublished = LocalDateTime.now();
 }

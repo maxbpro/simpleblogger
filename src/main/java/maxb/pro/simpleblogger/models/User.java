@@ -20,7 +20,9 @@ public class User implements UserDetails {
     private String id;
     private String username;
     private String password;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
 
     private boolean accountNonExpired = true;
     private boolean accountNonLocked = true;

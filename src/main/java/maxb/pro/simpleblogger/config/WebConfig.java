@@ -31,8 +31,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
         web.ignoring()
-                .antMatchers("/", "/vendor/**", "/css/**", "/js/**", "/img/**", "/lib/**",
-                        "/modules/**", "/app/**", "/static/**", "/authenticate", "/favicon.ico", "/index.html");
+                .antMatchers("/", "/vendor/**", "/css/**", "/common/**", "/img/**", "/lib/**",
+                        "/src/**", "/static/**", "/authenticate", "/about", "/register", "/favicon.ico", "/index.html");
     }
 
 

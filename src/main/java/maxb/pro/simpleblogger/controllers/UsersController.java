@@ -36,8 +36,8 @@ public class UsersController {
         if (oldUser == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        oldUser.setName (user.getName());
-        oldUser.setUsername(user.getUsername());
+        oldUser.setFirstName (user.getFirstName());
+        oldUser.setLastName (user.getLastName());
         User updateUser = userService.saveUser(oldUser);
         return new ResponseEntity<>(updateUser, HttpStatus.OK);
     }

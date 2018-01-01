@@ -59,20 +59,21 @@ public class PostsController {
         return postsService.savePost(post);
     }
 
-//    @PutMapping("/posts/")
-//    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
-//
-//        Post oldPost = postsService.findPost(id);
-//        if (oldPost == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//        oldPost.setContent (post.getContent());
-//        oldPost.setKeywords(post.getKeywords());
-//        oldPost.setTags(post.getTags());
-//        oldPost.setTitle(post.getTitle());
-//        Post updatedPost = postsService.savePost(oldPost);
-//        return new ResponseEntity<>(updatedPost, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Post> updatePost(@PathVariable String id, @RequestBody Post post) {
+
+        Post oldPost = postsService.findPost(id);
+        if (oldPost == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        oldPost.setContent (post.getContent());
+        oldPost.setKeywords(post.getKeywords());
+        oldPost.setTags(post.getTags());
+        oldPost.setTitle(post.getTitle());
+        oldPost.setComments(post.getComments());
+        Post updatedPost = postsService.savePost(oldPost);
+        return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+    }
 
     @DeleteMapping("/posts/{id}")
     public ResponseEntity<String> deletePost(@PathVariable("id") String id) {
