@@ -32,7 +32,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
         web.ignoring()
                 .antMatchers("/", "/vendor/**", "/css/**", "/common/**", "/img/**", "/lib/**",
-                        "/src/**", "/static/**", "/authenticate", "/about", "/register", "/favicon.ico", "/index.html");
+                        "/src/**", "/static/**", "/authenticate", "/about", "/register", "/posts", "/contact",
+                        "/favicon.ico", "/signup", "/login", "/index.html");
     }
 
 
