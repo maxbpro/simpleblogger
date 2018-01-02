@@ -1,0 +1,26 @@
+<urlrewrite default-match-type="wildcard">
+    <rule>
+        <from>/about</from>
+        <to>/index.html</to>
+    </rule>
+    <rule>
+        <from>/contact</from>
+        <to>/index.html</to>
+    </rule>
+
+    <rule>
+        <from>/login</from>
+        <to>/index.html</to>
+    </rule>
+
+    <rule>
+        <from>/signup</from>
+        <to>/index.html</to>
+    </rule>
+
+    <rule>
+        <from>/posts</from>
+        <to>/index.html</to>
+    </rule>
+
+</urlrewrite>
