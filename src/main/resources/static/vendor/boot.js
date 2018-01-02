@@ -26,7 +26,7 @@ head.load(
     { file: 'src/posts/js/services.js' },
 
     { file: 'vendor/bootstrap/js/bootstrap.bundle.min.js' },
+    { file: 'vendor/jqBootstrapValidation.js' },
     { file: 'lib/clean-blog.js' }
-
 
 );

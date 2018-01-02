@@ -19,6 +19,8 @@ angular.module('spBlogger.login.controllers',[])
         });
     }
 
+    $("input,textarea").not("[type=submit]").jqBootstrapValidation();
+
 }]).controller('SignUpController',['$scope','authService','$location',function($scope,authService,$location){
 
     $scope.buttonText="Sign Up";
@@ -42,11 +44,14 @@ angular.module('spBlogger.login.controllers',[])
         });
     }
 
+    $("input,textarea").not("[type=submit]").jqBootstrapValidation();
+
 }]).controller('AboutController',[function(){
 
 
 }]).controller('ContactController',[function(){
 
+    $("input,textarea").not("[type=submit]").jqBootstrapValidation();
 }]);
 
 
