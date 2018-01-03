@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('spBlogger.posts.controllers',[]).controller('PostController',['$scope','Post',function($scope,Post) {
 
     $scope.posts = Post.query();

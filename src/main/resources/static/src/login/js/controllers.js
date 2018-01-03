@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('spBlogger.login.controllers',[])
 
 .controller('SignInController',['$scope','authService','$location',function($scope,authService,$location){
@@ -38,7 +36,7 @@ angular.module('spBlogger.login.controllers',[])
             $location.path('/');
 
         },function(err){
-            $scope.invalidLogin=true;
+            $scope.invalidRegister=true;
         }).finally(function(){
             $scope.buttonText="Sign Up";
         });

@@ -1,16 +1,20 @@
-'use strict'
-
 angular.module('spBlogger.controllers',[]);
 
 angular.module('spBlogger.controllers')
-    .controller('MainController', MainCtrl);
+    .controller('MainController',['$scope','authService','$localStorage',
+        function($scope,authService, $localStorage){
 
-function MainCtrl($scope, authService, $localStorage) {
-    var main = this;
-    main.currentUser = $localStorage.currentUser;;
+            var main = this;
+            main.currentUser = $localStorage.currentUser;;
 
-    main.logout = function() {
-        main.currentUser = null;
-        authService.logout();
-    };
-};
+            $scope.$on('onCurrentUser', function (ctx, id) {
+                main.currentUser = id;
+                console.log(id);
+                console.log(main.currentUser);
+            });
+
+            main.logout = function() {
+                main.currentUser = null;
+                authService.logout();
+            };
+    }]);

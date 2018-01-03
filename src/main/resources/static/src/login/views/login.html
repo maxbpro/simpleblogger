@@ -19,6 +19,8 @@
         <div class="col-lg-8 col-md-10 mx-auto">
             <p>Sign in</p>
 
+            <div ng-show="invalidLogin" class="alert alert-danger">Invalid username/password</div>
+
             <form name="sentMessage" ng-submit="signin()" novalidate>
 
                 <div class="control-group">

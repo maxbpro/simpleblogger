@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('spBlogger.login.services', [])
 
 .factory('Post',['$resource','API_ENDPOINT',function($resource,API_ENDPOINT){
@@ -15,7 +13,8 @@ angular.module('spBlogger.login.services', [])
     }
 
 }]).factory('authService',['AUTH_ENDPOINT','SIGN_UP_ENDPOINT', 'LOGOUT_ENDPOINT','$http', '$localStorage',
-    function(AUTH_ENDPOINT, SIGN_UP_ENDPOINT, LOGOUT_ENDPOINT,$http, $localStorage){
+    '$rootScope', '$location',
+    function(AUTH_ENDPOINT, SIGN_UP_ENDPOINT, LOGOUT_ENDPOINT,$http, $localStorage, $rootScope, $location){
 
     var auth={};
 
@@ -39,6 +38,7 @@ angular.module('spBlogger.login.services', [])
             // add jwt token to auth header for all requests made by the $http service
             $http.defaults.headers.common.Authorization = 'Bearer ' + auth.token;
 
+            $rootScope.$broadcast('onCurrentUser', $localStorage.currentUser.user);
 
             return auth.user;
         });
@@ -65,6 +65,8 @@ angular.module('spBlogger.login.services', [])
             // add jwt token to auth header for all requests made by the $http service
             $http.defaults.headers.common.Authorization = 'Bearer ' + auth.token;
 
+            $rootScope.$broadcast('onCurrentUser', $localStorage.currentUser.user);
+
             return auth.user;
         });
 
@@ -77,6 +79,7 @@ angular.module('spBlogger.login.services', [])
 
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
+            $location.path('/login');
         });
     }
 

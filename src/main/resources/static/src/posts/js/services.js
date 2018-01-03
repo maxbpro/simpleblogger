@@ -1,4 +1,3 @@
-'use strict'
 
 angular.module('spBlogger.posts.services', []).factory('postService', function() {
   return {

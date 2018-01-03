@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('spBlogger',[
     'ngStorage',
     'ngResource',
@@ -17,12 +15,6 @@ angular.module('spBlogger').config(['$httpProvider', '$routeProvider', '$locatio
 
 
     $httpProvider.defaults.withCredentials = true;
-
-     //state('editPosts',{
-    //     url:'/',
-    //     controller: 'PostController',
-    //     templateUrl:'src/posts/views/admin-all-posts.html'
-    //
 
     $routeProvider
         .when('/', {
