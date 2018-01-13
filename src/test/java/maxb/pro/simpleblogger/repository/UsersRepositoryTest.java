@@ -44,73 +44,73 @@ public class UsersRepositoryTest {
     private UsersRepository repository;
 
 
-    @Before
-    public void before() {
-        collectionName = "user";
-        userToInsert = new User();
-
-        User user1 = new User();
-        user1.setId("1");
-        user1.setUsername("user1");
-
-        User user2 = new User();
-        user2.setId("2");
-        user2.setUsername("user2");
-
-        User user3 = new User();
-        user3.setId("3");
-        user3.setUsername("user3");
-
-        repository.save(Arrays.asList(user1, user2, user3));
-    }
-
-    @After
-    public void after() {
-        mongoTemplate.dropCollection(collectionName);
-    }
-
-    @Test
-    public void checkMongoTemplate() {
-        assertNotNull(mongoTemplate);
-        //DBCollection createdCollection = mongoTemplate.createCollection(collectionName);
-        assertTrue(mongoTemplate.collectionExists(collectionName));
-    }
-
-    @Test
-    public void count() {
-        List<User> all = repository.findAll();
-        assertThat(all.size(), equalTo(3));
-    }
-
-    @Test
-    public void checkUsersRepository() {
-        assertNotNull(repository);
-        User savedUser = repository.save(userToInsert);
-        assertNotNull(repository.findOne(savedUser.getId()));
-    }
-
-    @Test
-    public void findById() {
-        User user = repository.findOne("2");
-        assertNotNull(user);
-        assertEquals(user.getUsername(), "user2");
-    }
-
-    @Test
-    public void testDelete() {
-
-        repository.delete("3");
-        assertThat(repository.findAll().size(), equalTo(2));
-    }
-
-    @Test
-    public void testDeleteUser() {
-
-        User user = repository.findOne("3");
-
-        repository.delete(user);
-        assertThat(repository.findAll().size(), equalTo(2));
-    }
+//    @Before
+//    public void before() {
+//        collectionName = "user";
+//        userToInsert = new User();
+//
+//        User user1 = new User();
+//        user1.setId("1");
+//        user1.setUsername("user1");
+//
+//        User user2 = new User();
+//        user2.setId("2");
+//        user2.setUsername("user2");
+//
+//        User user3 = new User();
+//        user3.setId("3");
+//        user3.setUsername("user3");
+//
+//        repository.save(Arrays.asList(user1, user2, user3));
+//    }
+//
+//    @After
+//    public void after() {
+//        mongoTemplate.dropCollection(collectionName);
+//    }
+//
+//    @Test
+//    public void checkMongoTemplate() {
+//        assertNotNull(mongoTemplate);
+//        //DBCollection createdCollection = mongoTemplate.createCollection(collectionName);
+//        assertTrue(mongoTemplate.collectionExists(collectionName));
+//    }
+//
+//    @Test
+//    public void count() {
+//        List<User> all = repository.findAll();
+//        assertThat(all.size(), equalTo(3));
+//    }
+//
+//    @Test
+//    public void checkUsersRepository() {
+//        assertNotNull(repository);
+//        User savedUser = repository.save(userToInsert);
+//        assertNotNull(repository.findOne(savedUser.getId()));
+//    }
+//
+//    @Test
+//    public void findById() {
+//        User user = repository.findOne("2");
+//        assertNotNull(user);
+//        assertEquals(user.getUsername(), "user2");
+//    }
+//
+//    @Test
+//    public void testDelete() {
+//
+//        repository.delete("3");
+//        assertThat(repository.findAll().size(), equalTo(2));
+//    }
+//
+//    @Test
+//    public void testDeleteUser() {
+//
+//        User user = repository.findOne("3");
+//
+//        repository.delete(user);
+//        assertThat(repository.findAll().size(), equalTo(2));
+//    }
 
 //    @Test
 //    public void checkDocumentAndQuery() {
