@@ -16,30 +16,30 @@ import static org.junit.Assert.*;
 public class PostsControllerTest {
 
 
-    @Autowired
-    private MockMvc mvc;
-
-    @MockBean
-    private PostsController controller;
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @Test
-    public void allPosts() throws Exception {
-    }
-
-    @Test
-    public void createPost() throws Exception {
-    }
-
-    @Test
-    public void updatePost() throws Exception {
-    }
-
-    @Test
-    public void deletePost() throws Exception {
-    }
+//    @Autowired
+//    private MockMvc mvc;
+//
+//    @MockBean
+//    private PostsController controller;
+//
+//    @Before
+//    public void setUp() throws Exception {
+//    }
+//
+//    @Test
+//    public void allPosts() throws Exception {
+//    }
+//
+//    @Test
+//    public void createPost() throws Exception {
+//    }
+//
+//    @Test
+//    public void updatePost() throws Exception {
+//    }
+//
+//    @Test
+//    public void deletePost() throws Exception {
+//    }
 
 }

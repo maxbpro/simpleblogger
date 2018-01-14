@@ -27,19 +27,22 @@ public class LoginController {
     @Autowired
     private UsersRepository usersRepository;
 
-//    @PostConstruct
-//    private void init(){
-//        User user = new User();
-//        user.setUsername("maxb2009");
-//        user.setPassword("1234");
-//        user.setFirstName("Max");
-//        user.setLastName("Buyanow");
-//        user.setEmail("maxbpro2009@gmail.com");
-//        List<String> roles = new ArrayList<>();
-//        roles.add("USER");
-//        user.setRoles(roles);
-//        usersRepository.save(user);
-//    }
+    @PostConstruct
+    private void init(){
+
+        usersRepository.deleteAll();
+
+        User user = new User();
+        user.setUsername("maxb2009");
+        user.setPassword("1234");
+        user.setFirstName("Max");
+        user.setLastName("Buyanow");
+        user.setEmail("maxbpro2009@gmail.com");
+        List<String> roles = new ArrayList<>();
+        roles.add("USER");
+        user.setRoles(roles);
+        usersRepository.save(user);
+    }
 
 
     /**

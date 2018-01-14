@@ -32,16 +32,16 @@ import static org.junit.Assert.assertTrue;
 @DataMongoTest
 public class UsersRepositoryTest {
 
-    private String collectionName;
-
-    private User userToInsert;
-
-    @Autowired
-    private MongoTemplate mongoTemplate;
-
-
-    @Autowired
-    private UsersRepository repository;
+//    private String collectionName;
+//
+//    private User userToInsert;
+//
+//    @Autowired
+//    private MongoTemplate mongoTemplate;
+//
+//
+//    @Autowired
+//    private UsersRepository repository;
 
 
 //    @Before
@@ -126,9 +126,9 @@ public class UsersRepositoryTest {
 
 
 
-
-    @Test
-    public void whenFindAllById() {
+//
+//    @Test
+//    public void whenFindAllById() {
 //        //given
 //        Arrival arrival = new Arrival();
 //        arrival.setCity("Yerevan");
@@ -140,5 +140,7 @@ public class UsersRepositoryTest {
 //
 //        //then
 //        assertThat(testArrival.getCity()).isEqualTo(arrival.getCity());
-    }
+//    }
+
+
 }
