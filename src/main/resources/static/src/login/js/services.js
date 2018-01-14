@@ -89,7 +89,13 @@ angular.module('spBlogger.login.services', [])
 
 
 
-angular.module('spBlogger.login.services').value('API_ENDPOINT','http://localhost:8090/api/posts/:id');
-angular.module('spBlogger.login.services').value('AUTH_ENDPOINT','http://localhost:8090/authenticate');
-angular.module('spBlogger.login.services').value('SIGN_UP_ENDPOINT','http://localhost:8090/register');
-angular.module('spBlogger.login.services').value('LOGOUT_ENDPOINT','http://localhost:8090/logout');
+// angular.module('spBlogger.login.services').value('API_ENDPOINT','http://localhost:8090/api/posts/:id');
+// angular.module('spBlogger.login.services').value('AUTH_ENDPOINT','http://localhost:8090/authenticate');
+// angular.module('spBlogger.login.services').value('SIGN_UP_ENDPOINT','http://localhost:8090/register');
+// angular.module('spBlogger.login.services').value('LOGOUT_ENDPOINT','http://localhost:8090/logout');
+
+angular.module('spBlogger.login.services').value('API_ENDPOINT','http://daydiary.ru/api/posts/:id');
+angular.module('spBlogger.login.services').value('AUTH_ENDPOINT','http://daydiary.ru/authenticate');
+angular.module('spBlogger.login.services').value('SIGN_UP_ENDPOINT','http://daydiary.ru/register');
+angular.module('spBlogger.login.services').value('LOGOUT_ENDPOINT','http://daydiary.ru/logout');
+
