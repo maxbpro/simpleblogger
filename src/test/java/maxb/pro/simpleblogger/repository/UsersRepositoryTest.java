@@ -28,8 +28,8 @@ import static org.junit.Assert.assertTrue;
 
 
 //@ActiveProfiles("test")
-@RunWith(SpringRunner.class)
-@DataMongoTest
+//@RunWith(SpringRunner.class)
+//@DataMongoTest
 public class UsersRepositoryTest {
 
 //    private String collectionName;

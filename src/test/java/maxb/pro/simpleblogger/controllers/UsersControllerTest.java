@@ -27,8 +27,8 @@ import static org.mockito.BDDMockito.given;
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(UsersController.class)
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(UsersController.class)
 //@ContextConfiguration(classes= EmbeddedMongoConfig.class)
 public class UsersControllerTest {
 

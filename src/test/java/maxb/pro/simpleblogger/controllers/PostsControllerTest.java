@@ -11,8 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(PostsController.class)
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(PostsController.class)
 public class PostsControllerTest {
 
 
