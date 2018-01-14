@@ -57,12 +57,15 @@
                     </div>
                 </div>
 
+                <br/>
+                <br/>
+
                 <form ng-submit="sendComment(singlePost)" novalidate>
 
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
                             <label>Username</label>
-                            <textarea cols="40" rows="5" class="form-control" ng-model="comment.content" placeholder="Type your comment here"
+                            <textarea cols="40" rows="1" class="form-control" ng-model="comment.content" placeholder="Type your comment here"
                                    required data-validation-required-message="Please enter your comment."></textarea>
                             <p class="help-block text-danger"></p>
                         </div>

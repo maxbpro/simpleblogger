@@ -23,4 +23,9 @@
         <to>/index.html</to>
     </rule>
 
+    <rule>
+        <from>/posts/new</from>
+        <to>/index.html</to>
+    </rule>
+
 </urlrewrite>
